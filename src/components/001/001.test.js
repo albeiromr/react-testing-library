@@ -1,17 +1,20 @@
-import { render, screen} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Component001 from "./001";
 
-test("renders hello world", () => {
+test("H1 title renders correctly", () => {
   render(<Component001 />);
-  const title = screen.getByText("hello world");
-  expect(title).toBeVisible();
-  expect(title).toMatchSnapshot("<h1>hello world</h1>");
-  expect(title).not.toBeEmptyDOMElement();
+  const h1 = screen.getByText("hello world");
+  expect(h1).toBeInTheDocument();
 });
 
-test("renders hello world 2", () => {
-    render(<Component001 />);
-    const title = screen.getByText("I am Alex");
-    expect(title).toBeInTheDocument();
-    expect(title).toBeVisible();
+test("H1 title renders hello world text", () => {
+  render(<Component001 />);
+  const h1 = screen.getByText("hello world");
+  expect(h1).toHaveTextContent("hello world");
+});
+
+test("H2 title renders correctly", () => {
+  render(<Component001 />);
+  const h2 = screen.getByText("I am Alex");
+  expect(h2).not.toBeEmptyDOMElement();
 });
